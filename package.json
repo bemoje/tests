@@ -1,0 +1,134 @@
+{
+	"name": "@bemoje/tests",
+	"private": false,
+	"version": "1.3.1",
+	"description": "Node.js based micro testing framwork with powerful features to more efficiently get those tests over with. Focus on lightweight testing tiny micro standalone node library modules. Init automated and not dependent on any plugins to work. Make errors and stack traces visually easy to read. Tries to be scalable to other testing platforms, eventually, hopefully, by automated code refactoring.. Parses module exports in source code of sorrrounding files and builds a template from that to get going quickly. Command-line interface with no parameters. Should figure out what you are trying to do with it by itself, as it doesn't to a lot of fancy stuff - just the basics.. Beginner-friendly for sure.",
+	"main": "index.js",
+	"module": "module.js",
+	"browser": "",
+	"typings": "index.d.ts",
+	"bin": {
+		"tests": "./bin/cli.js"
+	},
+	"preferGlobal": true,
+	"scripts": {
+		"clean": "rimraf",
+		"rollup": "rollup -c",
+		"minify": "jsmin -l 2 --overwrite index.js",
+		"types": "tsc tests.js -d --allowJs --outFile index.d.ts --disableSizeLimit --emitDeclarationOnly --lib ESNext -m ESNext -t ESNext --isolatedModules --pretty --esModuleInterop --allowSyntheticDefaultImports",
+		"docs": "npm run docs:site && npm run docs:md",
+		"docs:site": "documentation build tests.js --shallow -f html -o docs --shallow",
+		"docs:md": "documentation build tests.js --shallow -f md -o docs/api.md --shallow",
+		"docs:serve": "documentation servetests.js",
+		"build": "npm run rollup && npm run types",
+		"repo": "node -r esm scripts/repo.js",
+		"version": "npm run repo version",
+		"major": "npm run repo bumpVersionMajor",
+		"minor": "npm run repo bumpVersionMinor",
+		"patch": "npm run repo bumpVersionPatch",
+		"readme": "npm run repo writeReadme",
+		"rename": "npm run repo rename",
+		"description": "npm run repo description",
+		"keywords": "npm run repo keywords",
+		"publish": "npm run repo npmPublish",
+		"commit": "git add -A && git commit -a && git push --set-upstream origin master",
+		"git-delete": "rimraf .git && bash scripts/github-delete.sh bemoje tests",
+		"git-create": "rimraf .git && npm run repo gitCreate && git init && git remote add origin https://github.com/bemoje/tests.git && git add -A && git commit -a && git push --set-upstream origin master"
+	},
+	"autorepo": {
+		"usernames": {
+			"github": "bemoje",
+			"buyMeCoffee": "bemoje",
+			"patreon": "bemoje"
+		}
+	},
+	"engines": {
+		"node": ">= 6.0.0",
+		"npm": ">= 3.0.0",
+		"yarn": "^0.13.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bemoje/bemoje-tests.git"
+	},
+	"bugs": {
+		"url": "https://github.com/bemoje/bemoje-tests/issues"
+	},
+	"author": {
+		"name": "Benjamin M. Jensen",
+		"email": "bemoje@gmail.com",
+		"url": "https://github.io/bemoje/"
+	},
+	"contributors": [
+		{
+			"name": "Benjamin M. Jensen",
+			"email": "bemoje@gmail.com",
+			"url": "https://github.io/bemoje/"
+		}
+	],
+	"keywords": [
+		"modules",
+		"code",
+		"framwork",
+		"features",
+		"tests",
+		"focus",
+		"standalone",
+		"node",
+		"library",
+		"init",
+		"plugins",
+		"work",
+		"errors",
+		"stack",
+		"traces",
+		"scalable",
+		"platforms",
+		"exports",
+		"source",
+		"files",
+		"template",
+		"command-line",
+		"interface",
+		"parameters",
+		"figure",
+		"doesn't",
+		"lot",
+		"stuff",
+		"basics",
+		"standalone node library modules",
+		"module exports",
+		"source code",
+		"stack traces",
+		"command-line interface"
+	],
+	"license": "MIT",
+	"dependencies": {
+		"@bemoje/arr-flatten": "^3.0.0",
+		"@octokit/core": "^3.1.2",
+		"camelcase": "^6.0.0",
+		"chai": "^4.2.0",
+		"chalk": "^4.1.0",
+		"esm": "^3.2.25",
+		"extract-comments": "^1.1.0",
+		"fs-extra": "^9.0.1",
+		"jest-serializer": "^26.3.0",
+		"lodash": "^4.17.20",
+		"npm-keyword": "^6.1.0",
+		"pupa": "^2.0.1"
+	},
+	"devDependencies": {
+		"@babel/plugin-transform-async-to-generator": "latest",
+		"@quilicicf/markdown-formatter": "^3.0.0",
+		"@rollup/plugin-commonjs": "^15.0.0",
+		"@rollup/plugin-node-resolve": "^9.0.0",
+		"handlebars": "^4.7.6",
+		"hirestime": "latest",
+		"jsmin": "^1.0.1",
+		"keyword-extractor": "0.0.19",
+		"rimraf": "latest",
+		"rollup": "^2.26.0",
+		"rollup-plugin-node-polyfills": "^0.2.1",
+		"walk-sync": "^2.2.0"
+	}
+}
