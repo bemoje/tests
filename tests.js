@@ -6,7 +6,7 @@
  * Tries to be scalable to other testing platforms, eventually, hopefully, by automated code refactoring..
  * Parses module exports in source code of sorrrounding files and builds a template from that to get going quickly.
  * Command-line interface with no parameters. Should figure out what you are trying to do with it by itself, as it doesn't to a lot of fancy stuff - just the basics..
- * Beginner-friendly for sure.
+ * Beginner-friendly for sure
  * @module tests
  */
 
